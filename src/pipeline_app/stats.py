@@ -29,7 +29,8 @@ def build_report(paths: list[Path]) -> str:
     report_lines = ["Quality Pipeline Report", "======================", ""]
     for item in stats:
         report_lines.append(
-            f"{item.file_name}: lines={item.lines}, words={item.words}, chars={item.chars}"
+            f"{item.file_name}: lines={item.lines}, words={item.words}, "
+            f"chars={item.chars}"
         )
 
     report_lines.extend(
