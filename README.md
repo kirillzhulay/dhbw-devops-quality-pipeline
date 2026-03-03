@@ -14,7 +14,7 @@ python -m pipeline_app.cli docs/input/chapter1.md docs/input/chapter2.md docs/in
 
 ## CI steps
 1. Quality checks (ruff, black)
-2. Automated tests (pytest)
+2. Automated tests (pytest). Tests include coverage reporting and fail below 85% coverage.
 3. Build artifact (report + zip)
 
 ## Focus area

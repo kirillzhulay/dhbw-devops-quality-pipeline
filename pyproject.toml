@@ -21,6 +21,7 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "--cov=src/pipeline_app --cov-report=term-missing --cov-fail-under=85"
 
 [tool.black]
 line-length = 88
