@@ -27,6 +27,7 @@ def test_build_report_contains_totals(tmp_path: Path) -> None:
     assert "a.md" in report
     assert "b.md" in report
 
+
 def test_compute_stats_empty_file(tmp_path: Path) -> None:
     file_path = tmp_path / "empty.md"
     file_path.write_text("", encoding="utf-8")
