@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -29,7 +33,23 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install --upgrade pip
       - run: pip install -e .[dev]
-      - run: pytest -q --cov=src/pipeline_app --cov-report=term-missing --cov-fail-under=85
+      - run: pytest -q --cov=src/pipeline_app --cov-report=term-missing --cov-fail-under=85 --cov-report=markdown:coverage.md
+
+      - name: Build coverage comment
+        if: github.event_name == 'pull_request'
+        run: |
+          {
+            echo "## Test Coverage Report"
+            echo ""
+            cat coverage.md
+          } > coverage-comment.md
+
+      - name: Post coverage comment
+        if: github.event_name == 'pull_request'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: test-coverage
+          path: coverage-comment.md
 
   security:
     runs-on: ubuntu-latest
