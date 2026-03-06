@@ -1,0 +1,7 @@
+graph TD
+    A[Code Push / PR] --> B[Quality: Ruff & Black]
+    B --> C[Test: Pytest + 85% Coverage]
+    B --> D[Security: Bandit & pip-audit]
+    C --> E[Build: Report Generation & ZIP]
+    D --> E
+    E --> F[Deploy: Shell Script to Target Dir]
