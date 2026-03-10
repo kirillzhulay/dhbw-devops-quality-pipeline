@@ -10,6 +10,11 @@ The focus is on reproducible local checks and clear Quality Gates (Linting, Form
 - Automated tests as a Quality Gate
 - Generation of a build artifact (text report)
 
+## Schwerpunkt (Focus Area)
+This project focuses on **Quality** (Automated Testing and Static Code Analysis) and **Security** (SAST). We demonstrate advanced depth through:
+* **Quality Gates:** 85% mandatory test coverage and SonarCloud integration.
+* **Security Auditing:** Automated vulnerability scanning using `bandit` and `pip-audit`.
+
 ## Technology Stack
 
 - Python `>=3.11`
@@ -89,9 +94,16 @@ pytest -q
 pytest --cov=src --cov-report=term-missing
 ```
 
+### Pre-commit Automation
+We use `pre-commit` to ensure code meets quality standards before it is even committed.
+```bash
+# Install the hooks
+pre-commit install
+
+# Run against all files manually
+pre-commit run --all-files
+
 ## CI/CD Pipeline (Target Workflow)
-
-
 
 Typical workflow in CI:
 
@@ -104,11 +116,18 @@ Typical workflow in CI:
 
 ---
 
+### SonarCloud Analysis
+The pipeline integrates SonarCloud to provide deep static analysis, tracking:
+* **Code Quality:** Automated detection of "code smells" and maintainability issues.
+* **Technical Debt:** Estimation of the effort required to fix existing issues.
+* **Security Hotspots:** Identification of potentially weak code patterns that require manual review.
+
 ### Quality Gates
 
 * **Pipeline fails** if Linting fails
 * **Pipeline fails** if Format-Check fails
 * **Pipeline fails** if tests fail
+* **Pipeline fails** if the SonarCloud Quality Gate status is "Failed"
 
 The artifact is only generated or published once gates have passed.
 
