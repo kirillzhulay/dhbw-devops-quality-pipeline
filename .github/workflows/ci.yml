@@ -132,7 +132,7 @@ jobs:
           name: pipeline-artifact
           path: incoming
       - run: chmod +x scripts/deploy_artifact.sh
-      - run: ./scripts/deploy_artifact.sh incoming/pipeline-artifact.zip deploy/target
+      - run: scripts/deploy_artifact.sh incoming/pipeline-artifact.zip deploy/target
       - uses: actions/upload-artifact@v4
         with:
           name: deployed-artifact
