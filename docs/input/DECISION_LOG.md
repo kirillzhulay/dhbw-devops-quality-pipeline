@@ -14,8 +14,6 @@ This document justifies the technical choices made for this project.
 * **SonarCloud / SonarQube**: Chosen to provide a centralized dashboard for code quality, tracking technical debt and maintainability over time beyond simple test coverage.
 * **Successful Build Criteria**: A build is considered successful only if it passes all linting checks, meets the 85% test coverage threshold, and identifies zero high-severity security vulnerabilities.
 
-* **Successful Build Criteria:** A build is considered successful only if it passes all linting checks, meets the 85% test coverage threshold, and identifies zero high-severity security vulnerabilities.
-
 ## Deployment Strategy
 
 * **Local Target Directory**: To keep the lab accessible and avoid external infrastructure costs, the deployment is simulated by moving the ZIP artifact to a specific folder using a bash script. This illustrates the logic of artifact delivery without requiring cloud credentials.
