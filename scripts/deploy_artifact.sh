@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 ARTIFACT_PATH="${1:-dist/pipeline-artifact.zip}"
